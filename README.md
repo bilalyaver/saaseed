@@ -14,7 +14,7 @@ built to quickly bootstrap multi-tenant SaaS applications.
 
 ## 🔧 Quick Start
 ```bash
-git clone <repo-url> saaseed
+git clone https://github.com/bilalyaver/saaseed.git saaseed
 cd saaseed
 npm install
 cp .env.example .env
