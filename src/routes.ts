@@ -5,7 +5,9 @@ import tenantRoutes from "@modules/tenants/tenant.routes";
 import usersRoutes from "@modules/users/user.routes";
 
 // Health check
-router.get("/health", (_req, res) => res.json({ ok: true }));
+router.get("/health", (_req, res) => {
+    res.json({ ok: true });
+});
 
 // Modül rotaları
 router.use("/auth", authRoutes);
