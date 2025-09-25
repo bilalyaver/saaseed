@@ -1,5 +1,5 @@
 import { AppError } from "@core/utils/error";
-import { UserModel } from "../auth/user.model";
+import { UserModel } from "./user.model";
 
 export class UsersService {
   async list(tenantId: string) {

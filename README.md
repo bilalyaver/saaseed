@@ -1,7 +1,8 @@
 # SaaSeed · Node.js SaaS Boilerplate
 
 SaaSeed is a **Node.js (Express + TypeScript + MongoDB + Zod + Swagger)** boilerplate,  
-built to quickly bootstrap multi-tenant SaaS applications.
+built to quickly bootstrap multi-tenant SaaS applications.  
+It now also includes an **Admin UI** (Next.js + Tailwind + shadcn/ui) under `apps/admin`.
 
 ## 🚀 Features
 - 🪪 **Authentication**: JWT + Refresh (argon2)
@@ -11,6 +12,7 @@ built to quickly bootstrap multi-tenant SaaS applications.
 - 🪵 **Pino** structured logging
 - 🗄️ **MongoDB** integration with Mongoose
 - 🧪 Ready-to-use testing setup (Vitest + Supertest)
+- 🖥️ **Admin UI**: Next.js + TailwindCSS + shadcn/ui (under `apps/admin`)
 
 ## 🔧 Quick Start
 ```bash
@@ -19,26 +21,32 @@ cd saaseed
 npm install
 cp .env.example .env
 npm run dev
+# API available at: http://localhost:3000
+# Admin UI available at: http://localhost:3000 (Next.js app)
 # Swagger available at: http://localhost:3000/api/docs
 ```
 
 ## 📦 Scripts
 ```bash
-npm run dev     # ts-node-dev + tsconfig-paths
-npm run build   # tsc + tsc-alias
-npm start       # runs dist/server.js
-npm test        # vitest
+npm run dev:api    # Run API only
+npm run dev:admin  # Run Admin UI only
+npm run dev        # Run both API + Admin UI concurrently
+npm run build      # Build API (tsc + tsc-alias)
+npm start          # Run compiled API (dist/server.js)
+npm test           # Run tests with Vitest
 ```
 
 ## 📂 Project Structure
 - `src/core`: config, logger, error handling, db, middlewares (auth/tenant/rbac)
 - `src/modules`: core modules (`auth`, `tenants`, `users`)
 - `src/docs`: Swagger generation with zod-openapi
+- `apps/admin`: Admin UI (Next.js + Tailwind + shadcn/ui)
 
 ## 🛣 Roadmap
 - [x] Auth + Tenant + RBAC
 - [x] Swagger + Zod integration
-- [o] File upload (Multer, 5MB limit)
+- [x] Admin UI (Next.js base + shadcn/ui)
+- [ ] File upload (Multer, 5MB limit)
 - [ ] Mailer (MailHog for dev, provider for prod)
 - [ ] Queue support (BullMQ) + cron jobs
 - [ ] Optional billing (Stripe / iyzico integration)

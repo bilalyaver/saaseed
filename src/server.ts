@@ -3,7 +3,7 @@ import app from "./app";
 import { connectDB } from "@core/db/connect";
 import { logger } from "@core/utils/logger";
 
-const PORT = config.PORT || 3000;
+const PORT = config.PORT || 8080;
 
 async function start() {
   try {

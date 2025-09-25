@@ -2,11 +2,16 @@
   "name": "saaseed",
   "version": "1.0.0",
   "main": "dist/server.js",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
-    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only src/server.ts",
+    "dev:api": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only src/server.ts",
+    "dev:admin": "npm run dev -w apps/admin",
+    "dev": "concurrently -n api,admin -c cyan,magenta \"npm:dev:api\" \"npm:dev:admin\"",
     "build": "tsc && tsc-alias",
     "start": "node dist/server.js",
-    "lint": "eslint . --ext .ts",
     "test": "vitest run"
   },
   "keywords": [],
@@ -35,6 +40,7 @@
     "@types/node": "^24.5.2",
     "@types/supertest": "^6.0.3",
     "@types/swagger-ui-express": "^4.1.8",
+    "concurrently": "^9.2.1",
     "supertest": "^7.1.4",
     "ts-node-dev": "^2.0.0",
     "tsc-alias": "^1.8.16",

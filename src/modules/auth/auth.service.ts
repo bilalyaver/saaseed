@@ -1,4 +1,4 @@
-import { UserModel } from "./user.model";
+import { UserModel } from "../users/user.model";
 import { RefreshTokenModel } from "./tokens.model";
 import jwt, { JwtPayload, Secret, SignOptions } from "jsonwebtoken";
 import argon2 from "argon2";
@@ -31,7 +31,6 @@ export class AuthService {
 
     const accessOpts: SignOptions = { expiresIn: config.ACCESS_TTL as unknown as SignOptions["expiresIn"] };
     const refreshOpts: SignOptions = { expiresIn: config.REFRESH_TTL as unknown as SignOptions["expiresIn"] };
-
     const accessToken = jwt.sign(payload, secret, accessOpts);
     const refreshToken = jwt.sign({ sub: payload.sub, type: "refresh" } as JwtPayload, secret, refreshOpts);
 

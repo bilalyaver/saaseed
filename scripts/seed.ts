@@ -1,7 +1,7 @@
 // ts-node-dev ile çalıştır: npx ts-node scripts/seed.ts
 import mongoose from "mongoose";
 import { config } from "../src/core/utils/config";
-import { UserModel } from "../src/modules/auth/user.model";
+import { UserModel } from "../src/modules/users/user.model";
 import { TenantModel } from "../src/modules/tenants/tenant.model";
 import argon2 from "argon2";
 
@@ -13,7 +13,7 @@ async function run() {
   const passwordHash = await argon2.hash(pass);
 
   // önce user (tenant'sız)
-  const user = await UserModel.create({ email, passwordHash, role: "owner", tenantId: new mongoose.Types.ObjectId() });
+  const user = await UserModel.create({ email, passwordHash, role: "superadmin", tenantId: new mongoose.Types.ObjectId() });
 
   // sonra tenant
   const tenant = await TenantModel.create({ name: "Demo Tenant", ownerId: user._id });

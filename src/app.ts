@@ -6,10 +6,12 @@ import swaggerUi from "swagger-ui-express";
 import { logger } from "@core/utils/logger";
 import { buildOpenApiSpec } from "./docs/openapi";
 import { errorHandler } from "@core/utils/error";
+import { responseEnhancer } from "@core/middlewares/response.middleware";
 const app = express();
 
 // Orta katmanlar
 app.use(express.json());
+app.use(responseEnhancer); 
 app.use(cors());
 app.use(helmet());
 

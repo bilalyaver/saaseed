@@ -6,7 +6,7 @@ import jwt, { JwtPayload, Secret } from "jsonwebtoken";
 export interface ReqUser {
   sub: string | any;
   tenantId?: string;
-  role?: "owner" | "admin" | "member";
+  role?: "superadmin" | "admin" | "member";
 }
 
 declare global {

@@ -7,9 +7,14 @@ const service = new UsersService();
 
 export class UsersController {
   list = async (req: Request, res: Response) => {
-    const tenantId = req.user!.tenantId!;
+    try {
+      const tenantId = req.user!.tenantId!;
     const users = await service.list(tenantId);
-    res.json(users);
+    res.sendSuccess(users);
+    } catch (error) {
+      res.sendError(error);
+    }
+    
   };
 
   create = async (req: Request, res: Response) => {

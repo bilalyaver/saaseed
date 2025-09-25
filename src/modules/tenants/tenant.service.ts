@@ -2,7 +2,7 @@ import { TenantModel } from "./tenant.model";
 import argon2 from "argon2";
 import crypto from "crypto";
 import { AppError } from "@core/utils/error";
-import { UserModel } from "@modules/auth/user.model";
+import { UserModel } from "@modules/users/user.model";
 
 export class TenantService {
   async createTenant(ownerUserId: string, name: string) {

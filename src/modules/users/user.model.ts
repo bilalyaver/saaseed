@@ -4,7 +4,7 @@ export interface IUser extends Document {
   _id: string | Schema.Types.ObjectId;
   email: string;
   passwordHash: string;
-  role: "owner" | "admin" | "member";
+  role: "superadmin" | "owner" | "admin" | "member";
   tenantId: string | Schema.Types.ObjectId;
 }
 

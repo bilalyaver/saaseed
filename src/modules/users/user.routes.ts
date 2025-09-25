@@ -15,7 +15,7 @@ const createUserSchema = z.object({
   role: z.enum(["admin", "member"])
 });
 
-router.get("/",  authGuard, tenantGuard, requireRole(["owner","admin"]), controller.list);
-router.post("/", authGuard, tenantGuard, requireRole(["owner","admin"]), validate(createUserSchema), controller.create);
+router.get("/",  authGuard, tenantGuard, requireRole(["superadmin","admin"]), controller.list);
+router.post("/", authGuard, tenantGuard, requireRole(["superadmin","admin"]), validate(createUserSchema), controller.create);
 
 export default router;
